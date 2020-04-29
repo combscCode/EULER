@@ -1,0 +1,3 @@
+looping through a bunch of values is inefficient.
+Whenever you're performing a summation you can always look to pull things out of the summation to reduce runtime.
+Make sure to be exact for off by one potential problems
