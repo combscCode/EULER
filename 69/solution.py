@@ -1,15 +1,9 @@
+'''
+NOTES
 
-def generate_primes( n ):
-	primes = [2]
-	for i in range(3,n,2):
-		is_prime = True
-		for prime in primes:
-			if i % prime == 0:
-				is_prime = False
-				break
-		if is_prime:
-			primes.append(i)
-	primes.insert(0, 1)
-	return primes
+to find the maximum we want to maximize n and minimize phi
+just multiply by primes until we hit 1,000,000
+'''
+import math
 
-
+target = 1000000
