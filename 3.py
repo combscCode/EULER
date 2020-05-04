@@ -8,10 +8,10 @@ loop i from 1 to sqrt(n)
 we need to build up our list of primes. If a number is not divisible by a prime then it is considered prime.
 
 '''
-import math
+from euler import generate_primes, sqrt_floor
 n = 600851475143 
 
-def largest_prime_factor(m):
+def previous_solution(m):
 	largest = 1
 	primes = []
 	i = 2
@@ -21,15 +21,20 @@ def largest_prime_factor(m):
 			if i % prime == 0:
 				is_prime = False
 				break
-			if prime > math.sqrt( i ):
+			if prime > sqrt_floor( i ):
 				break
 		if is_prime:
-			print(i)
 			primes.append(i)
 			if m % i == 0:
 				largest = i
 		i += 1
-	print(primes)
 	return largest
 
-print(largest_prime_factor(n))
+def new_solution(m):
+	largest = 1
+	primes = generate_primes(greatest=sqrt_floor(m))
+	for p in primes:
+		if m % p == 0:
+			largest = p
+	return largest
+print(new_solution(n))
