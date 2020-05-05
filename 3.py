@@ -9,7 +9,9 @@ we need to build up our list of primes. If a number is not divisible by a prime 
 
 '''
 from euler import generate_primes, sqrt_floor
+import math
 n = 600851475143 
+test = 123123123
 
 def previous_solution(m):
 	largest = 1

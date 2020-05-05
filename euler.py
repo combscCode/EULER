@@ -4,26 +4,39 @@ import warnings
 import math
 
 def bitwise_length(x):
+	if x == 0:
+		return 1
 	if not isinstance( x, int ):
 		warnings.warn('bitwise_length parameter must be an int')
 		raise RuntimeError
 	length = 0
-	while x:
-		x >>= x
+	while x != 0:
+		x >>= 1
 		length += 1
 	return length
 
 def log2_floor(x):
 	return bitwise_length(int(x))
 
+def sqrt_approx(x, delta):
+	if x < 0:
+		warnings.warn('sqrt_approx parameter must be >= 0')
+		raise RuntimeError
+	estimate = 1 << ( log2_floor( x ) // 2 )
+	change = delta + 1
+	while change > delta:
+		new_estimate = 0.5 * (estimate + x/estimate)
+		change = abs(new_estimate - estimate)
+		estimate = new_estimate
+	return estimate
+
+# Babylonian Method
 def sqrt_floor( x ):
 	if x < 0:
 		warnings.warn('sqrt_floor parameter must be >= 0')
 		raise RuntimeError
-	floor = 1 << ( log2_floor( x ) // 2 )
-	while( floor * floor <= x ):
-		floor += 1
-	return floor - 1
+	return int(sqrt_approx(x, 0.05))
+	
 
 def generate_primes(n=None, greatest=None, include_one=False):
 	if n is None and greatest is None or n is not None and greatest is not None:

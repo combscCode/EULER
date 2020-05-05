@@ -13,4 +13,5 @@ def sqrt_floor_test():
 		assert( euler.sqrt_floor(i) == int(math.sqrt(i)))
 
 if __name__ == '__main__':
+	bitwise_length_test()
 	sqrt_floor_test()
