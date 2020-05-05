@@ -35,8 +35,10 @@ def sqrt_floor( x ):
 	if x < 0:
 		warnings.warn('sqrt_floor parameter must be >= 0')
 		raise RuntimeError
-	return int(sqrt_approx(x, 0.05))
-	
+	estimate = int(sqrt_approx(x, 0.05))
+	if (estimate - 1)**2 == x:
+		return estimate - 1
+	return estimate
 
 def generate_primes(n=None, greatest=None, include_one=False):
 	if n is None and greatest is None or n is not None and greatest is not None:
