@@ -79,9 +79,14 @@ def generate_primes(n=None, greatest=None, include_one=False):
 		primes.insert(0, 1)
 	return primes
 
+#implemented using euclidean method
+def gcf(a, b):
+	while b:
+		a, b = b, a%b
+	return a
 
-
-
+def is_reduced_fraction(n,d):
+	return gcf(n,d) == 1
 
 if __name__ == '__main__':
 	print("Feel free to take a look through the project to see my solutions!")
