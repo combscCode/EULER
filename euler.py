@@ -88,5 +88,25 @@ def gcf(a, b):
 def is_reduced_fraction(n,d):
 	return gcf(n,d) == 1
 
+def factor_int(n,primes):
+	if n == 0:
+		warnings.warn('factor_int: factoring 0 doesnt make sense')
+		raise RuntimeError
+	factors = []
+	for p in primes:
+		while n % p == 0:
+			factors.append(p)
+			n /= p
+	return factors
+
+def distinct_primes_factors(n,primes):
+	return set(factor_int(n,primes))
+
+def ceil(a, b):
+	return a//b+(a%b!=0)
+
+def ceil(n):
+	return n + (n - int(n) != 0)
+
 if __name__ == '__main__':
 	print("Feel free to take a look through the project to see my solutions!")
